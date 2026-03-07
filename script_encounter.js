@@ -31,10 +31,6 @@ const oppRussianDrunk = document.getElementById("opp_russiandrunk");
 const oppBabushka = document.getElementById("opp_babushka");
 const oppWidePutin = document.getElementById("opp_wideputin");
 
-const putinMusic = new Audio("music/putin_theme.mp3")
-
-putinMusic.volume = .5;
-
 const putinMusic2Intro = new Audio("music/putin_theme2_intro.MP3");
 putinMusic2Intro.loop = true;
 
