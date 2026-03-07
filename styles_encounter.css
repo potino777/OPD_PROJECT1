@@ -1,0 +1,198 @@
+body {
+    background-color: rgb(26, 24, 24);
+}
+.dialogue-text {
+    position: fixed;
+    font-size: 6vh;
+    font-family: "Balthazar", serif;
+    font-style: normal;
+    overflow-wrap: break-word;
+    white-space: normal;
+    color: white;
+    top: 66vh;
+    left: 20vw;
+    width: 70vw;
+    cursor: default;
+
+    border: .3vh solid white;
+}
+.dialogue-option-text1, .dialogue-option-text2, .dialogue-option-text3 {
+    position: fixed;
+    width: 25vw;
+    font-size: 5vh;
+    font-family: "Balthazar", serif;
+    font-style: normal;
+    overflow-wrap: break-word;
+    white-space: normal;
+    color: white;
+    top: 66vh;
+    cursor: pointer;
+    border: .3vh solid white;
+    cursor: default;
+
+    display: none;
+}
+.dialogue-option-text1 {
+    left: 2vw;
+}
+.dialogue-option-text2 {
+    left: 35vw;
+}
+.dialogue-option-text3 {
+    left: 65vw;
+}
+
+.putin-appearance {
+    position: fixed;
+    height: 48vh;
+    top: 2vh;
+    right: 50vw;
+    transform: translate(50%);
+
+    display: none;
+}
+
+.continue-button, .call-button, .attack-button {
+    position: fixed;
+    height: 26vh;
+    bottom: 2vh;
+    left: 4vw;
+    cursor: pointer;
+}
+.continue-button {
+    left: 4vw;
+}
+.call-button {
+    left: 16vw;
+
+    display: none;
+}
+.attack-button {
+    left: 4vw;
+    
+    display: none;
+}
+
+.tv-background {
+    position: fixed;
+    height: 45vh;
+    bottom: 30vh;
+    left: 0vw;
+
+    display: none;
+}
+.loading-circle-anim {
+    position: fixed;
+    height: 10vh;
+    left: 0vw;
+    transform: translate(135%);
+
+    display: none;
+}
+.loading-circle-anim {
+    bottom: 45vh;
+}
+
+.stand-point1, .stand-point2, .stand-point3, .stand-point4 {
+    position: fixed;
+    bottom: 2vh;
+    height: 25vh;
+    cursor: pointer;
+    z-index: -200;
+
+    display: none;
+}
+.stand-point1 {
+    left: 15vw;
+    transform: rotate(0deg);
+}
+.stand-point2 {
+    left: 35vw;
+    transform: rotate(90deg);
+}
+.stand-point3 {
+    left: 55vw;
+    transform: rotate(180deg);
+}
+.stand-point4 {
+    left: 75vw;
+    transform: rotate(270deg);
+}
+
+.star {
+    position: fixed;
+    height: 12vh;
+    bottom: 9vh;
+    left: 0vw;
+    transform: translate(52%);
+    pointer-events: none;
+    z-index: -100;
+
+    display: none;
+}
+
+.opp-bear {
+    position: fixed;
+    bottom: 2vh;
+    height: 20vh;
+    left: 50vw;
+    pointer-events: none;
+
+    display: none;
+}
+.opp-russiandrunk {
+    position: fixed;
+    bottom: 2vh;
+    height: 30vh;
+    left: -4vw;
+    pointer-events: none;
+
+    display: none;
+}
+.opp-babushka {
+    position: fixed;
+    bottom: 2vh;
+    height: 30vh;
+    left: 92vw;
+    pointer-events: none;
+
+    display: none;
+}
+
+.fire {
+    position: fixed;
+    bottom: 2vh;
+    left: 35vw;
+    z-index: 500;
+    height: 25vh;
+
+    display: none;
+}
+.warning {
+    position: fixed;
+    bottom: 30vh;
+    left: 50vw;
+    height: 30vh;
+    transform: translate(-50%);
+    z-index: 1000;
+
+    display: none;
+}
+.pigeons {
+    position: fixed;
+    bottom: 2vh;
+    left: 35vw;
+    z-index: 500;
+    height: 25vh;
+
+    display: none;
+}
+.paz {
+    position: fixed;
+    bottom: 16vh;
+    left: 35vw;
+    z-index: -1000;
+    height: 25vh;
+
+    display: none;
+}
