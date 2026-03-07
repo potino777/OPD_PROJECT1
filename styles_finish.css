@@ -1,0 +1,34 @@
+body {
+    background-color: rgb(26, 24, 24);
+}
+.bday-video {
+    position: fixed;
+    height: 35vh;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+}
+.playvideo-button {
+    position: fixed;
+    height: 15vh;
+    bottom: 5vh;
+    left: 15vw;
+    cursor: pointer;
+    transform: translate(-50%);
+}
+.tv-background {
+    position: fixed;
+    height: 100vh;
+    top: 49vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+}
+.loading-circle-anim {
+    position: fixed;
+    height: 10vh;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+
+    display: none;
+}

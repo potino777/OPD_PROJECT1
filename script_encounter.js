@@ -2,6 +2,8 @@ const loadingCircleAnim = document.getElementById("loading_circle_anim");
 const tvBackground = document.getElementById("tv_background");
 const dialogueText = document.getElementById("dialogue_text");
 
+const opponentAnnouncement = document.getElementById("opponent_announcement");
+
 const star = document.getElementById("star");
 
 const warningElement = document.getElementById("warning");
@@ -27,13 +29,18 @@ const putinAppearance = document.getElementById("putin_appearance");
 const oppBear = document.getElementById("opp_bear");
 const oppRussianDrunk = document.getElementById("opp_russiandrunk");
 const oppBabushka = document.getElementById("opp_babushka");
+const oppWidePutin = document.getElementById("opp_wideputin");
 
-const putinMusic2Intro = new Audio("music/putin_theme2_intro.mp3");
+const putinMusic = new Audio("music/putin_theme.mp3")
+
+putinMusic.volume = .5;
+
+const putinMusic2Intro = new Audio("music/putin_theme2_intro.MP3");
 putinMusic2Intro.loop = true;
 
-const putinMusic2Start = new Audio("music/putin_theme2_start.mp3");
+const putinMusic2Start = new Audio("music/putin_theme2_start.MP3");
 
-const putinMusic2 = new Audio("music/putin_theme2.mp3");
+const putinMusic2 = new Audio("music/putin_theme2.MP3");
 putinMusic2.loop = true;
 
 async function imageIterator (frames, element, ms) {
@@ -86,8 +93,10 @@ function showDialogueOptions () {
 
     callButton.style.display = "none";
 
-    tvBackground.style.display = "none";
+    //tvBackground.style.display = "none";
     loadingCircleAnim.style.display = "none";
+
+    attackButton.style.display = "none";
     
     dialogueOptionText1.style.display = "block";
     dialogueOptionText2.style.display = "block";
@@ -105,6 +114,8 @@ function showTalk () {
     dialogueOptionText3.style.display = "none";
 }
 function showActions () {
+    continueButton.style.display = "none";
+
     attackButton.style.display = "block";
     callButton.style.display = "block";
 
@@ -114,18 +125,23 @@ function showActions () {
 
 function setStandingStandPoint (pos) {
     if (oppStandingStandPoint == pos || blockedStandPoints[pos]) {return null};
-    
+
     standingStandPoint = pos;
-    
+
     star.style.left = standPointPositions[pos-1].toString() + "vw";
 }
 function setDamagingStandPoint (pos) {
     if (canPlaceDamagingStandPoint) {
-        damagingStandPoint = pos;
+        if (finalAttack && blockedStandPoints[pos]) {
+            // good luck bro
+        }
+        else {
+            damagingStandPoint = pos;
 
-        standPoints[pos-1].style.border = ".3vh solid red";
+            standPoints[pos-1].style.border = ".3vh solid red";
 
-        canPlaceDamagingStandPoint = false;
+            canPlaceDamagingStandPoint = false;
+        }
     }
 }
 
@@ -158,10 +174,35 @@ let screenIsRed = false;
 async function setOppPos (pos) {
     oppStandingStandPoint = pos;
 
+    if (oppStandingStandPoint == 0) {return null};
+
     if (standingStandPoint == oppStandingStandPoint) {
         damageStandPoint(standingStandPoint);
+        
+        hp -= 1;
+        document.getElementById("self_hp_text").textContent = "HP: "+hp.toString();
+
+        if (hp == 0) {
+            location.reload();
+        }
     }
     if (oppStandingStandPoint == damagingStandPoint) {
+        if (finalAttack) {
+            blockedStandPoints[pos] = pos;
+
+            const standPoint = standPoints[damagingStandPoint-1]
+            standPoint.style.transform = "rotate(0deg)";
+            standPoint.src = "images/encounter/opp_wideputin/burning_stand_point.gif";
+        }
+        else {
+            oppHP -= 1;
+            document.getElementById("putin_hp_text").textContent = "HP: "+oppHP.toString();
+
+            if (oppHP == 1) {
+                finalAttack = true;
+            }
+        }
+
         standPoints[damagingStandPoint-1].style.border = "none";
 
         damagingStandPoint = 0;
@@ -187,7 +228,10 @@ function damageAndBlockStandPoint (pos) {
 
     damageStandPoint(pos);
 }
+let putinTanking = false;
 async function enterAttack () {
+    continueButton.style.display = "none";
+
     standPoint1.style.display = "block";
     standPoint2.style.display = "block";
     standPoint3.style.display = "block";
@@ -202,14 +246,29 @@ async function enterAttack () {
     attackEntered = true;
     canPlaceDamagingStandPoint = true;
 
+    let opponentNumber = 0;
+
+    if (oppHP < 6) {
+        putinAppearance.src = "images/encounter/wide_putin.gif";
+
+        opponentNumber = 4;
+    }
+    else {
+        opponentNumber = getRandomInt(1, 3);
+    }
+
+    opponentAnnouncement.textContent = attackNames[opponentNumber-1]+" INCOMING";
+    opponentAnnouncement.style.display = "block";
+
     await new Promise((resolve) => {
         document.addEventListener("startOppAttack", resolve, { once: true });
     });
     
     await delay(1000);
     
-    const random = getRandomInt(1, 3);
-    switch (random) {
+    opponentAnnouncement.style.display = "none";
+    
+    switch (opponentNumber) {
         case 1:
             oppAttackBear();
             break;
@@ -218,6 +277,9 @@ async function enterAttack () {
             break;
         case 3:
             oppAttackBabushka();
+            break;
+        case 4:
+            oppAttackWidePutin();
             break;
     }
 
@@ -230,8 +292,6 @@ async function enterAttack () {
     oppStandingStandPoint = 0;
     damagingStandPoint = 0;
 
-    blockedStandPoints.length = 0;
-
     standPoint1.style.display = "none";
     standPoint2.style.display = "none";
     standPoint3.style.display = "none";
@@ -241,11 +301,185 @@ async function enterAttack () {
     
     warningElement.style.display = "none";
 
+    attackEntered = false;
+
+    dialogueText.style.display = "block";
+    
+    switch (oppHP) {
+        default:
+            dialogueText.textContent = "...";
+        case 11:
+            dialogueText.textContent = "Putin: our culture will defeat any western spy shall one dare challenge us";
+            break;
+        case 10:
+            dialogueText.textContent = "Putin: and you, you must have been sent out of the rotted west to stop our prosperity...";
+            break;
+        case 9:
+            dialogueText.textContent = "Putin: and i am here to tell you, that will NOT happen!";
+            break;
+        case 8:
+            dialogueText.textContent = "Putin: we will keep out any western propaganda out of the country...";
+            break;
+        case 7:
+            dialogueText.textContent = "Putin: even if it takes to block any media consumed by my civilians";
+            break;
+        case 6:
+            dialogueText.textContent = "Putin: i am their protector, their supreme leader, they must worship me";
+            break;
+        case 5:
+            dialogueText.textContent = "Putin: they will do as I SAY";
+            break;
+        case 4:
+            dialogueText.textContent = "Putin: and nobody will ask them";
+            break;
+        case 3:
+            dialogueText.textContent = "Putin: my civilians...";
+            break;
+        case 2:
+            dialogueText.textContent = "Putin: will be my slaves forever.";
+            break;
+        case 1:
+            switch (putinTanking) {
+                case false:
+                    putinTanking = true;
+
+                    dialogueText.style.left = "20vw";
+                    dialogueText.style.width = "70vw";
+
+                    dialogueText.textContent = "Putin: oh you think you can defeat me this easy?";
+
+                    continueButton.style.display = "block";
+
+                    await waitForEvent(continueButton, "click")
+
+                    dialogueText.textContent = "Putin: watch THIS!";
+
+                    await waitForEvent(continueButton, "click")
+
+                    dialogueText.textContent = "*Putin is TANKING the next 3 hits*";
+
+                    continueButton.style.display = "none";
+                    break;
+                case true:
+                    dialogueText.textContent = "...";
+                    break;
+            }
+            break;
+    }
+
+    dialogueText.style.left = "32vw";
+    dialogueText.style.width = "50vw";
+
     callButton.style.display = "block";
     attackButton.style.display = "block";
     dialogueText.style.display = "block";
+}
+
+let widePutinLastAttackCount = 0;
+
+async function oppAttackWidePutin () {
+    putinAppearance.style.display = "none";
+
+    oppWidePutin.style.display = "block";
+    oppWidePutin.style.left = "-15vw";
+
+    await delay(1000);
+
+    let movesTotal = getRandomInt(8, 12); //8, 12
+    let movesAmount = 0;
     
-    attackEntered = false;
+    let putinSpeed = 150;
+    
+    oppWidePutin.src = "images/encounter/opp_wideputin/walking_fast.gif";
+
+    while (movesAmount < movesTotal) {
+        movesAmount++;
+
+        if (widePutinLastAttackCount == 3) {
+            movesTotal = 20;
+
+            if (hp == 1) {
+                standPoint4.src = "images/encounter/stand_point.png"
+                blockedStandPoints.splice(4-1, 1);
+
+                oppWidePutin.src = "images/encounter/opp_wideputin/walking.gif";
+
+                putinSpeed = 8000;
+
+                async function funcA () {
+                    await delay(1000);
+
+                    callButton.style.display = "block";
+                }
+
+                funcA();
+
+                async function funcB (pos) {
+                    await delay(4000);
+
+                    damageAndBlockStandPoint(pos);
+                    const standPoint = standPoints[pos-1];
+
+                    standPoint.style.transform = "rotate(0deg)";
+                    standPoint.src = "images/encounter/opp_wideputin/burning_stand_point.gif";
+                }
+
+                funcB(1);
+                funcB(2);
+                funcB(3);
+            }
+        }
+
+        oppWidePutin.style.transition = `left ${putinSpeed}ms linear`;
+
+        oppWidePutin.style.left = "15vw";
+        
+        await delay(putinSpeed);
+
+        setOppPos(1);
+        setOppPos(0);
+        
+        oppWidePutin.style.left = "35vw";
+        
+        await delay(putinSpeed);
+        
+        setOppPos(2);
+        setOppPos(0);
+
+        oppWidePutin.style.left = "55vw";
+        
+        await delay(putinSpeed);
+        
+        setOppPos(3);
+        setOppPos(0);
+
+        oppWidePutin.style.left = "75vw";
+
+        await delay(putinSpeed);
+        
+        setOppPos(4);
+        setOppPos(0);
+        
+        oppWidePutin.style.left = "115vw";
+
+        await delay(putinSpeed);
+        
+        oppWidePutin.style.transition = "";
+        oppWidePutin.style.left = "-15vw";
+
+        await delay(100);
+
+        if (finalAttack && (widePutinLastAttackCount < 3)) {
+            widePutinLastAttackCount++;
+
+            break;
+        }
+    }
+    
+    oppWidePutin.style.display = "none";
+    putinAppearance.style.display = "block";
+
+    document.dispatchEvent(attackEnded);
 }
 async function oppAttackBabushka () {
     async function goToStandPoint (pos) {
@@ -295,6 +529,7 @@ async function oppAttackBabushka () {
     
     await delay(500);
     
+    oppBabushka.style.left = "92vw";
     oppBabushka.style.display = "block";
     
     await delay(500);
@@ -387,6 +622,8 @@ async function oppAttackBabushka () {
 
     oppBabushka.style.display = "none";
     pigeonsElement.style.display = "none";
+    
+    blockedStandPoints.length = 0;
 
     document.dispatchEvent(attackEnded);
 }
@@ -519,6 +756,8 @@ async function oppAttackRussianDrunk () {
     oppRussianDrunk.src = "images/encounter/opp_russiandrunk/idle.gif";
     oppRussianDrunk.style.display = "none";
     fireElement.style.display = "none";
+    
+    blockedStandPoints.length = 0;
 
     document.dispatchEvent(attackEnded);
 }
@@ -693,6 +932,18 @@ const standPoints = [standPoint1, standPoint2, standPoint3, standPoint4];
 const standPointPositions = [15, 35, 55, 75];
 const blockedStandPoints = [];
 
+const attackNames = [
+    "BEAR",
+    "RUSSIAN DRUNK",
+    "BABUSHKA",
+    "WIDE PUTIN",
+]
+
+let finalAttack = false;
+
+let hp = 6;
+let oppHP = 12;
+
 let attackEntered = false;
 
 let standingStandPoint = 0;
@@ -705,11 +956,168 @@ let skipBeginning = false;
 
 let canPlaceDamagingStandPoint = true;
 
+let regenCount = 0;
+
 dialogueText.addEventListener("click", function () {
     skipBeginning = true;
 })
 attackButton.addEventListener("click", enterAttack);
+callButton.addEventListener("click", usePhone);
 
+async function usePhone () {
+    if (widePutinLastAttackCount < 3) {
+        showDialogueOptions()
+
+        dialogueOptionText1.textContent = "*Call for help*";
+        dialogueOptionText2.textContent = "*check a picture of Levi in your gallery*";
+        dialogueOptionText3.textContent = "";
+
+        await buttonsListener([dialogueOptionText1, dialogueOptionText2, dialogueOptionText3]);
+
+        showTalk();
+
+        switch (dialogueOptionTextClicked) {
+            case 1:
+                dialogueText.textContent = "*you tried to call for help, but the cell service and the internet are blocked by Putin*"
+
+                await waitForEvent(continueButton, "click");
+
+                dialogueText.textContent = "Putin: harsh world environment creates harsh measures to protect our citizens, including the complete blocking of social media!";
+
+                break;
+            case 2:
+                regenCount = Math.min(4, regenCount+1);
+
+                switch (regenCount) {
+                    case 1:
+                        dialogueText.textContent = "*seeing Levi gives you a feeling of increased strength*";
+                
+                        await waitForEvent(continueButton, "click");
+                
+                        dialogueText.textContent = "*2 HP regenerated! (max HP: 6)*";
+
+                        hp = Math.min(6, hp+2);
+                        document.getElementById("self_hp_text").textContent = "HP: "+hp.toString();
+
+                        await waitForEvent(continueButton, "click");
+                
+                        dialogueText.textContent = "Putin: you are so pretty yet so silly, Levi won't be coming to save you today.";
+                        break;
+                    case 2:
+                        dialogueText.textContent = "*seeing Levi motivates you to keep fighting so you can keep seeing his face some more*";
+
+                        await waitForEvent(continueButton, "click");
+
+                        dialogueText.textContent = "*2 HP regenerated! (max HP: 6)*";
+
+                        hp = Math.min(6, hp+2);
+                        document.getElementById("self_hp_text").textContent = "HP: "+hp.toString();
+
+                        await waitForEvent(continueButton, "click");
+
+                        dialogueText.textContent = "Putin: keep praying to a fictional hero, you silly woman";
+                        break;
+                    case 3:
+                        dialogueText.textContent = "*seeing Levi gives you hope that he will come by to save you*";
+
+                        await waitForEvent(continueButton, "click");
+
+                        dialogueText.textContent = "*2 HP regenerated! (max HP: 6)*";
+
+                        hp = Math.min(6, hp+2);
+                        document.getElementById("self_hp_text").textContent = "HP: "+hp.toString();
+                        break;
+                    case 4:
+                        dialogueText.textContent = "*seeing Levi's face so many times makes reality hit you...*";
+
+                        await waitForEvent(continueButton, "click");
+
+                        dialogueText.textContent = "*you remember that he's a fictional character and your feelings are faded out*";
+
+                        await waitForEvent(continueButton, "click");
+
+                        dialogueText.textContent = "*HP regeneration is no more*";
+                        break;
+            }
+        }
+
+        await waitForEvent(continueButton, "click");
+
+        enterAttack();
+    }
+    else {
+        dialogueText.style.display = "block";
+        continueButton.style.display = "block";
+
+        callButton.style.display = "none";
+
+        dialogueText.textContent = "CELL SERVICE AVAILABLE";
+
+        await waitForEvent(continueButton, "click");
+
+        dialogueText.textContent = 'NEW MESSAGE FROM IBA: "come let me moisture ur lips w my tongue"';
+        
+        await waitForEvent(continueButton, "click");
+        
+        dialogueText.textContent = `NEW MESSAGE FROM UNKNOWN CONTACT: "hey aren't you 7 years younger than me? happy birthday!"`;
+
+        await waitForEvent(continueButton, "click");
+
+        dialogueText.textContent = `NEW MESSAGE FROM HOT VOICE COUSIN: "HAPPY BIRTHDAY HONEY"`;
+
+        await waitForEvent(continueButton, "click");
+
+        dialogueText.textContent = `NEW MESSAGE FROM RUSSIA: "i didn't call you ugly btw ur rlly beautiful!!"`;
+
+        await waitForEvent(continueButton, "click");
+
+        dialogueText.textContent = `NEW MESSAGE FROM UNKNOWN CONTACT: "⚡ HOLD ONTO YOUR HATS! ⚡ The SALE You've Been Dreaming Of Is HERE!"`;
+
+        await waitForEvent(continueButton, "click");
+
+        dialogueText.textContent = "NEW CONTACT: LEVI ACKERMAN";
+
+        await waitForEvent(continueButton, "click");
+
+        dialogueText.style.display = "none";
+        continueButton.style.display = "none";
+
+        dialogueOptionText1.style.display = "block";
+        dialogueOptionText2.style.display = "block";
+        dialogueOptionText3.style.display = "block";
+
+        dialogueOptionText1.textContent = "call for help";
+        dialogueOptionText2.textContent = "...";
+        dialogueOptionText3.textContent = "...";
+
+        await waitForEvent(dialogueOptionText1, "click");
+        
+        dialogueOptionText1.textContent = "go to contacts";
+        dialogueOptionText2.textContent = "...";
+        dialogueOptionText3.textContent = "...";
+        
+        await waitForEvent(dialogueOptionText1, "click");
+        
+        dialogueOptionText1.textContent = "Contact: Levi Ackerman";
+        dialogueOptionText2.textContent = "...";
+        dialogueOptionText3.textContent = "...";
+        
+        await waitForEvent(dialogueOptionText1, "click");
+        
+        dialogueOptionText1.textContent = "Call: Levi Ackerman";
+        dialogueOptionText2.textContent = "...";
+        dialogueOptionText3.textContent = "...";
+        await waitForEvent(dialogueOptionText1, "click");
+        
+        dialogueOptionText1.textContent = "Call: Levi Ackerman";
+        dialogueOptionText2.textContent = "...";
+        dialogueOptionText3.textContent = "...";
+
+        await waitForEvent(dialogueOptionText1, "click");
+
+        window.location.href = "finish.html";
+    }
+}
 async function start () {
     dialogueText.textContent = "click continue to continue OR click this text and THEN click continue to skip the beginning dialogue";
 
@@ -859,7 +1267,12 @@ async function start () {
         putinMusic2.play();
     })
 
-    tvBackground.style.display = "block";
+    //tvBackground.style.display = "block";
+    
+    document.getElementById("self_icon").style.display = "block";
+    document.getElementById("putin_icon").style.display = "block";
+    document.getElementById("self_hp_text").style.display = "block";
+    document.getElementById("putin_hp_text").style.display = "block";
 
     showActions();
 
