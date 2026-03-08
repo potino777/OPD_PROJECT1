@@ -253,8 +253,6 @@ async function enterAttack () {
         opponentNumber = getRandomInt(1, 3);
     }
 
-    opponentNumber = 2;
-
     opponentAnnouncement.textContent = attackNames[opponentNumber-1]+" INCOMING";
     opponentAnnouncement.style.display = "block";
 
