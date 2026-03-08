@@ -79,9 +79,9 @@ function buttonsListener (buttons) {
         dialogueOptionTextClicked = number;
     }
 
-    dialogueOptionText1.addEventListener("pointerdown", () => callback(1));
-    dialogueOptionText2.addEventListener("pointerdown", () => callback(2));
-    dialogueOptionText3.addEventListener("pointerdown", () => callback(3));
+    dialogueOptionText1.addEventListener("click", () => callback(1));
+    dialogueOptionText2.addEventListener("click", () => callback(2));
+    dialogueOptionText3.addEventListener("click", () => callback(3));
 }
 function showDialogueOptions () {
     dialogueText.style.display = "none";
@@ -346,11 +346,11 @@ async function enterAttack () {
 
                     continueButton.style.display = "block";
 
-                    await waitForEvent(continueButton, "pointerdown")
+                    await waitForEvent(continueButton, "click")
 
                     dialogueText.textContent = "Putin: watch THIS!";
 
-                    await waitForEvent(continueButton, "pointerdown")
+                    await waitForEvent(continueButton, "click")
 
                     dialogueText.textContent = "*Putin is TANKING the next 3 hits*";
 
@@ -956,11 +956,11 @@ let canPlaceDamagingStandPoint = true;
 
 let regenCount = 0;
 
-dialogueText.addEventListener("pointerdown", function () {
+dialogueText.addEventListener("click", function () {
     skipBeginning = true;
 })
-attackButton.addEventListener("pointerdown", enterAttack);
-callButton.addEventListener("pointerdown", usePhone);
+attackButton.addEventListener("click", enterAttack);
+callButton.addEventListener("click", usePhone);
 
 async function usePhone () {
     if (widePutinLastAttackCount < 3) {
@@ -978,7 +978,7 @@ async function usePhone () {
             case 1:
                 dialogueText.textContent = "*you tried to call for help, but the cell service and the internet are blocked by Putin*"
 
-                await waitForEvent(continueButton, "pointerdown");
+                await waitForEvent(continueButton, "click");
 
                 dialogueText.textContent = "Putin: harsh world environment creates harsh measures to protect our citizens, including the complete blocking of social media!";
 
@@ -990,35 +990,35 @@ async function usePhone () {
                     case 1:
                         dialogueText.textContent = "*seeing Levi gives you a feeling of increased strength*";
                 
-                        await waitForEvent(continueButton, "pointerdown");
+                        await waitForEvent(continueButton, "click");
                 
                         dialogueText.textContent = "*2 HP regenerated! (max HP: 6)*";
 
                         hp = Math.min(6, hp+2);
                         document.getElementById("self_hp_text").textContent = "HP: "+hp.toString();
 
-                        await waitForEvent(continueButton, "pointerdown");
+                        await waitForEvent(continueButton, "click");
                 
                         dialogueText.textContent = "Putin: you are so pretty yet so silly, Levi won't be coming to save you today.";
                         break;
                     case 2:
                         dialogueText.textContent = "*seeing Levi motivates you to keep fighting so you can keep seeing his face some more*";
 
-                        await waitForEvent(continueButton, "pointerdown");
+                        await waitForEvent(continueButton, "click");
 
                         dialogueText.textContent = "*2 HP regenerated! (max HP: 6)*";
 
                         hp = Math.min(6, hp+2);
                         document.getElementById("self_hp_text").textContent = "HP: "+hp.toString();
 
-                        await waitForEvent(continueButton, "pointerdown");
+                        await waitForEvent(continueButton, "click");
 
                         dialogueText.textContent = "Putin: keep praying to a fictional hero, you silly woman";
                         break;
                     case 3:
                         dialogueText.textContent = "*seeing Levi gives you hope that he will come by to save you*";
 
-                        await waitForEvent(continueButton, "pointerdown");
+                        await waitForEvent(continueButton, "click");
 
                         dialogueText.textContent = "*2 HP regenerated! (max HP: 6)*";
 
@@ -1028,18 +1028,18 @@ async function usePhone () {
                     case 4:
                         dialogueText.textContent = "*seeing Levi's face so many times makes reality hit you...*";
 
-                        await waitForEvent(continueButton, "pointerdown");
+                        await waitForEvent(continueButton, "click");
 
                         dialogueText.textContent = "*you remember that he's a fictional character and your feelings are faded out*";
 
-                        await waitForEvent(continueButton, "pointerdown");
+                        await waitForEvent(continueButton, "click");
 
                         dialogueText.textContent = "*HP regeneration is no more*";
                         break;
             }
         }
 
-        await waitForEvent(continueButton, "pointerdown");
+        await waitForEvent(continueButton, "click");
 
         enterAttack();
     }
@@ -1051,31 +1051,31 @@ async function usePhone () {
 
         dialogueText.textContent = "CELL SERVICE AVAILABLE";
 
-        await waitForEvent(continueButton, "pointerdown");
+        await waitForEvent(continueButton, "click");
 
         dialogueText.textContent = 'NEW MESSAGE FROM IBA: "come let me moisture ur lips w my tongue"';
         
-        await waitForEvent(continueButton, "pointerdown");
+        await waitForEvent(continueButton, "click");
         
         dialogueText.textContent = `NEW MESSAGE FROM UNKNOWN CONTACT: "hey aren't you 7 years younger than me? happy birthday!"`;
 
-        await waitForEvent(continueButton, "pointerdown");
+        await waitForEvent(continueButton, "click");
 
         dialogueText.textContent = `NEW MESSAGE FROM HOT VOICE COUSIN: "HAPPY BIRTHDAY HONEY"`;
 
-        await waitForEvent(continueButton, "pointerdown");
+        await waitForEvent(continueButton, "click");
 
         dialogueText.textContent = `NEW MESSAGE FROM RUSSIA: "i didn't call you ugly btw ur rlly beautiful!!"`;
 
-        await waitForEvent(continueButton, "pointerdown");
+        await waitForEvent(continueButton, "click");
 
         dialogueText.textContent = `NEW MESSAGE FROM UNKNOWN CONTACT: "⚡ HOLD ONTO YOUR HATS! ⚡ The SALE You've Been Dreaming Of Is HERE!"`;
 
-        await waitForEvent(continueButton, "pointerdown");
+        await waitForEvent(continueButton, "click");
 
         dialogueText.textContent = "NEW CONTACT: LEVI ACKERMAN";
 
-        await waitForEvent(continueButton, "pointerdown");
+        await waitForEvent(continueButton, "click");
 
         dialogueText.style.display = "none";
         continueButton.style.display = "none";
@@ -1088,30 +1088,30 @@ async function usePhone () {
         dialogueOptionText2.textContent = "...";
         dialogueOptionText3.textContent = "...";
 
-        await waitForEvent(dialogueOptionText1, "pointerdown");
+        await waitForEvent(dialogueOptionText1, "click");
         
         dialogueOptionText1.textContent = "go to contacts";
         dialogueOptionText2.textContent = "...";
         dialogueOptionText3.textContent = "...";
         
-        await waitForEvent(dialogueOptionText1, "pointerdown");
+        await waitForEvent(dialogueOptionText1, "click");
         
         dialogueOptionText1.textContent = "Contact: Levi Ackerman";
         dialogueOptionText2.textContent = "...";
         dialogueOptionText3.textContent = "...";
         
-        await waitForEvent(dialogueOptionText1, "pointerdown");
+        await waitForEvent(dialogueOptionText1, "click");
         
         dialogueOptionText1.textContent = "Call: Levi Ackerman";
         dialogueOptionText2.textContent = "...";
         dialogueOptionText3.textContent = "...";
-        await waitForEvent(dialogueOptionText1, "pointerdown");
+        await waitForEvent(dialogueOptionText1, "click");
         
         dialogueOptionText1.textContent = "Call: Levi Ackerman";
         dialogueOptionText2.textContent = "...";
         dialogueOptionText3.textContent = "...";
 
-        await waitForEvent(dialogueOptionText1, "pointerdown");
+        await waitForEvent(dialogueOptionText1, "click");
 
         window.location.href = "finish.html";
     }
@@ -1119,7 +1119,7 @@ async function usePhone () {
 async function start () {
     dialogueText.textContent = "click continue to continue OR click this text and THEN click continue to skip the beginning dialogue";
 
-    await waitForEvent(continueButton, "pointerdown");
+    await waitForEvent(continueButton, "click");
 
     putinAppearance.style.display = "block";
 
@@ -1128,19 +1128,19 @@ async function start () {
 
     dialogueText.textContent = "*Vladimir Putin appears!*";
 
-    await waitForEvent(continueButton, "pointerdown");
+    await waitForEvent(continueButton, "click");
 
     dialogueText.textContent = 'that video, and actually, any other part of the internet i deem "unsafe';
 
-    await waitForEvent(continueButton, "pointerdown");
+    await waitForEvent(continueButton, "click");
 
     dialogueText.textContent = "you will not need to watch them and you will not be able to watch them";
 
-    await waitForEvent(continueButton, "pointerdown");
+    await waitForEvent(continueButton, "click");
 
     dialogueText.textContent = "all of that is dirty western media that corrupts the brains of my citizens with all the propaganda";
 
-    await waitForEvent(continueButton, "pointerdown");
+    await waitForEvent(continueButton, "click");
     
     dialogueOptionText1.textContent = "*Insist on finishing the video*";
     dialogueOptionText2.textContent = "*Confess love*";
@@ -1156,105 +1156,105 @@ async function start () {
         case 1:
             dialogueText.textContent = "why do you wanna finish the video?";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
 
             dialogueText.textContent = "does that video contain instructions from western agencies aimed towards professional espionage within the borders of the Russian Federation?";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
 
             dialogueText.textContent = "who are you...";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
 
             dialogueText.textContent = "a western spy?";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
 
             dialogueText.textContent = "sorry lady but i'll have to step in";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
 
             dialogueText.textContent = "to eliminate you";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
             break;
         case 2:
             dialogueText.textContent = "!..";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
 
             dialogueText.textContent = "what are you talking about?";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
 
             dialogueText.textContent = "why would a foreigner confess love to me?";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
 
             dialogueText.textContent = "...";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
 
             dialogueText.textContent = "only to deceive me";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
 
             dialogueText.textContent = "to make me pull my guard down and create an opportunity to stab me in the back!";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
 
             dialogueText.textContent = "i know what game you are playing...";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
 
             dialogueText.textContent = "the americans must've sent you trick me";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
 
             dialogueText.textContent = "you cowardish american spy";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
 
             dialogueText.textContent = "i will have to kill you for this.";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
             break;
         case 3:
             dialogueText.textContent = "...";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
 
             dialogueText.textContent = "i will not stand such disrespect";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
 
             dialogueText.textContent = "you are not only disrespecting me";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
 
             dialogueText.textContent = "you are disrespecting my people";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
 
             dialogueText.textContent = "that is something that only a brainwashed westerner would do";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
 
             dialogueText.textContent = "or worse...";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
 
             dialogueText.textContent = "a foreign spy!";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
 
             dialogueText.textContent = "you wanna know the punishment for being a western spy on russian land?";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
 
             dialogueText.textContent = "death.";
 
-            await waitForEvent(continueButton, "pointerdown");
+            await waitForEvent(continueButton, "click");
     }
     }
 
@@ -1280,7 +1280,7 @@ async function start () {
 
     putinAppearance.style.height = "64vh";
 
-    await waitForEvent(callButton, "pointerdown");
+    await waitForEvent(callButton, "click");
 }
 
 setStandingStandPoint(1);
