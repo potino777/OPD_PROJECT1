@@ -940,7 +940,7 @@ const attackNames = [
 let finalAttack = false;
 
 let hp = 6;
-let oppHP = 12;
+let oppHP = 2;
 
 let attackEntered = false;
 
@@ -963,7 +963,7 @@ attackButton.addEventListener("click", enterAttack);
 callButton.addEventListener("click", usePhone);
 
 async function usePhone () {
-    if (widePutinLastAttackCount < 3) {
+    if (!attackEntered) {
         showDialogueOptions()
 
         dialogueOptionText1.textContent = "*Call for help*";
