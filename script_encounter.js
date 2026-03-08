@@ -263,7 +263,7 @@ async function enterAttack () {
     await delay(1000);
     
     opponentAnnouncement.style.display = "none";
-    opponentNumber = 2;
+    
     switch (opponentNumber) {
         case 1:
             oppAttackBear();
