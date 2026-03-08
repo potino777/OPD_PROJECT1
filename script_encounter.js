@@ -1116,6 +1116,8 @@ async function usePhone () {
         dialogueOptionText1.textContent = "Call: Levi Ackerman";
         dialogueOptionText2.textContent = "...";
         dialogueOptionText3.textContent = "...";
+        
+        hp = 100;
 
         await waitForEvent(dialogueOptionText1, "click");
 
