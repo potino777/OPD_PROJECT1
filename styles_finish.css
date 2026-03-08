@@ -1,5 +1,6 @@
 body {
-    background-color: rgb(26, 24, 24);
+    /*background-color: rgb(26, 24, 24);*/
+    background-color: black;
 }
 .bday-video {
     position: fixed;
@@ -7,6 +8,17 @@ body {
     top: 50vh;
     left: 50vw;
     transform: translate(-50%, -50%);
+
+    display: none;
+}
+.the-end-video {
+    position: fixed;
+    height: 100vh;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+
+    display: none;
 }
 .playvideo-button {
     position: fixed;
@@ -20,13 +32,6 @@ body {
     position: fixed;
     height: 100vh;
     top: 49vh;
-    left: 50vw;
-    transform: translate(-50%, -50%);
-}
-.loading-circle-anim {
-    position: fixed;
-    height: 10vh;
-    top: 50vh;
     left: 50vw;
     transform: translate(-50%, -50%);
 
