@@ -253,6 +253,8 @@ async function enterAttack () {
         opponentNumber = getRandomInt(1, 3);
     }
 
+    opponentNumber = 2;
+
     opponentAnnouncement.textContent = attackNames[opponentNumber-1]+" INCOMING";
     opponentAnnouncement.style.display = "block";
 
@@ -285,8 +287,13 @@ async function enterAttack () {
     
     await delay(1000);
 
+    if (damagingStandPoint != 0) {
+        standPoints[damagingStandPoint-1].style.border = "none";
+
+        damagingStandPoint = 0;
+    }
+
     oppStandingStandPoint = 0;
-    damagingStandPoint = 0;
 
     standPoint1.style.display = "none";
     standPoint2.style.display = "none";
@@ -705,7 +712,7 @@ async function oppAttackRussianDrunk () {
 
         previousDirection = direction;
 
-        const burstAmount = getRandomInt(1, 4);
+        const burstAmount = 3;
 
         switch (direction) {
             case 1:
@@ -713,38 +720,39 @@ async function oppAttackRussianDrunk () {
 
                 //await delay(500);
 
+                oppRussianDrunk.src = "images/encounter/opp_russiandrunk/gunfire.gif";
+
                 for (let i = 0; i < burstAmount; i++) {
                     if (!screenIsRed) {
                         damageStandPoint(3);
                         damageStandPoint(4);
                     }
 
-                    oppRussianDrunk.src = "images/encounter/opp_russiandrunk/shot_fired.png";
-
-                    await delay(60);
-                    
-                    oppRussianDrunk.src = "images/encounter/opp_russiandrunk/aiming.png";
-                    
-                    await delay(60);
+                    await delay(120);
                 }
+                
+                oppRussianDrunk.src = "images/encounter/opp_russiandrunk/aiming.png";
+                
+                await delay(60);
                 break;
             case 2:
                 oppRussianDrunk.style.transform = "scaleX(1)";
 
                 //await delay(500);
-                if (!screenIsRed) {
-                    damageStandPoint(1);
-                }
+
+                oppRussianDrunk.src = "images/encounter/opp_russiandrunk/gunfire.gif";
                 
                 for (let i = 0; i < burstAmount; i++) {
-                    oppRussianDrunk.src = "images/encounter/opp_russiandrunk/shot_fired.png";
-
-                    await delay(60);
+                    if (!screenIsRed) {
+                        damageStandPoint(1);
+                    }
                     
-                    oppRussianDrunk.src = "images/encounter/opp_russiandrunk/aiming.png";
-                    
-                    await delay(60);
+                    await delay(120);
                 }
+
+                oppRussianDrunk.src = "images/encounter/opp_russiandrunk/aiming.png";
+                
+                await delay(60);
                 break;
         }
 
