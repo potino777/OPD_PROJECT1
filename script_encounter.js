@@ -940,7 +940,7 @@ const attackNames = [
 let finalAttack = false;
 
 let hp = 6;
-let oppHP = 2;
+let oppHP = 12;
 
 let attackEntered = false;
 
