@@ -982,11 +982,11 @@ async function usePhone () {
 
         switch (dialogueOptionTextClicked) {
             case 1:
-                dialogueText.textContent = "*you tried to call for help, but the cell service and the internet are blocked by Putin*"
+                dialogueText.textContent = "*Вы попытались позвонить на помощь, но Коля заблокировал местную сеть*"
 
                 await waitForEvent(continueButton, "click");
 
-                dialogueText.textContent = "Putin: harsh world environment creates harsh measures to protect our citizens, including the complete blocking of social media!";
+                dialogueText.textContent = "Коля: ради защиты народа я готов остаться без связи";
 
                 break;
             case 2:
@@ -994,53 +994,53 @@ async function usePhone () {
 
                 switch (regenCount) {
                     case 1:
-                        dialogueText.textContent = "*seeing Levi gives you a feeling of increased strength*";
+                        dialogueText.textContent = "*Смотря на фотографию Леви, вы ощущаете надежду*";
                 
                         await waitForEvent(continueButton, "click");
                 
-                        dialogueText.textContent = "*2 HP regenerated! (max HP: 6)*";
+                        dialogueText.textContent = "*2 HP востановленно! (максимум HP: 6)*";
 
                         hp = Math.min(6, hp+2);
                         document.getElementById("self_hp_text").textContent = "HP: "+hp.toString();
 
                         await waitForEvent(continueButton, "click");
                 
-                        dialogueText.textContent = "Putin: you are so pretty yet so silly, Levi won't be coming to save you today.";
+                        dialogueText.textContent = "Коля: вы любите мечтать, но ваш спаситель не явится сегодня.";
                         break;
                     case 2:
-                        dialogueText.textContent = "*seeing Levi motivates you to keep fighting so you can keep seeing his face some more*";
+                        dialogueText.textContent = "*смотря на фотографию Леви, вы замотивированны сражаться дальше*";
 
                         await waitForEvent(continueButton, "click");
 
-                        dialogueText.textContent = "*2 HP regenerated! (max HP: 6)*";
+                        dialogueText.textContent = "2 HP востановленно! (максимум HP: 6)*";
 
                         hp = Math.min(6, hp+2);
                         document.getElementById("self_hp_text").textContent = "HP: "+hp.toString();
 
                         await waitForEvent(continueButton, "click");
 
-                        dialogueText.textContent = "Putin: keep praying to a fictional hero, you silly woman";
+                        dialogueText.textContent = "Коля: молитесь дальше на своего вымышленного героя";
                         break;
                     case 3:
-                        dialogueText.textContent = "*seeing Levi gives you hope that he will come by to save you*";
+                        dialogueText.textContent = "*смотря на фотографию Леви, вы представляете, как он придет вас спасти*";
 
                         await waitForEvent(continueButton, "click");
 
-                        dialogueText.textContent = "*2 HP regenerated! (max HP: 6)*";
+                        dialogueText.textContent = "*2 HP востановленно! (максимум HP: 6)*";
 
                         hp = Math.min(6, hp+2);
                         document.getElementById("self_hp_text").textContent = "HP: "+hp.toString();
                         break;
                     case 4:
-                        dialogueText.textContent = "*seeing Levi's face so many times makes reality hit you...*";
+                        dialogueText.textContent = "*смотря на фотографию Леви столько раз, вы ничего не чуствуете*";
 
                         await waitForEvent(continueButton, "click");
 
-                        dialogueText.textContent = "*you remember that he's a fictional character and your feelings are faded out*";
+                        dialogueText.textContent = "*вы вспомнили, что это вымышленный персонаж, и ваша надежда встает в тупик*";
 
                         await waitForEvent(continueButton, "click");
 
-                        dialogueText.textContent = "*HP regeneration is no more*";
+                        dialogueText.textContent = "*Восстановление HP прекращено*";
                         break;
             }
         }
