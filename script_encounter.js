@@ -310,34 +310,34 @@ async function enterAttack () {
         default:
             dialogueText.textContent = "...";
         case 11:
-            dialogueText.textContent = "Putin: our culture will defeat any western spy shall one dare challenge us";
+            dialogueText.textContent = "Крепостной Коля: наш народ одержит победу над любым иноземцем, коли таков позовет нас на бой";
             break;
         case 10:
-            dialogueText.textContent = "Putin: and you, you must have been sent out of the rotted west to stop our prosperity...";
+            dialogueText.textContent = "Крепостной Коля: судя по вам, вы из далеких, далеких земель, прибыли здесь чтобы убить нас...";
             break;
         case 9:
-            dialogueText.textContent = "Putin: and i am here to tell you, that will NOT happen!";
+            dialogueText.textContent = "Крепостной Коля: своего сударя я не подведу, а ты и метра дальше не пройдешь!";
             break;
         case 8:
-            dialogueText.textContent = "Putin: we will keep out any western propaganda out of the country...";
+            dialogueText.textContent = "Крепостной Коля: мы сдержим любых захватчиков на нашей же земле...";
             break;
         case 7:
-            dialogueText.textContent = "Putin: even if it takes to block any media consumed by my civilians";
+            dialogueText.textContent = "Крепостной Коля: даже если появятся жертвы среди наших воинов";
             break;
         case 6:
-            dialogueText.textContent = "Putin: i am their protector, their supreme leader, they must worship me";
+            dialogueText.textContent = "Крепостной Коля: я их защищу, покажу кто их лидер, и они же мне и помогут";
             break;
         case 5:
-            dialogueText.textContent = "Putin: they will do as I SAY";
+            dialogueText.textContent = "Крепостной Коля: мы встанем за свою родину";
             break;
         case 4:
-            dialogueText.textContent = "Putin: and nobody will ask them";
+            dialogueText.textContent = "Крепостной Коля: и нас никто не убедит сдаваться";
             break;
         case 3:
-            dialogueText.textContent = "Putin: my civilians...";
+            dialogueText.textContent = "Крепостной Коля: мои русские люди";
             break;
         case 2:
-            dialogueText.textContent = "Putin: will be my slaves forever.";
+            dialogueText.textContent = "Крепостной Коля: сражаются вечно.";
             break;
         case 1:
             switch (putinTanking) {
@@ -347,17 +347,17 @@ async function enterAttack () {
                     dialogueText.style.left = "20vw";
                     dialogueText.style.width = "70vw";
 
-                    dialogueText.textContent = "Putin: oh you think you can defeat me this easy?";
+                    dialogueText.textContent = "Крепостной Коля: так уж думаешь тебе наш народ сдасться?";
 
                     continueButton.style.display = "block";
 
                     await waitForEvent(continueButton, "click")
 
-                    dialogueText.textContent = "Putin: watch THIS!";
+                    dialogueText.textContent = "Крепостной Коля: такому не бывать!";
 
                     await waitForEvent(continueButton, "click")
 
-                    dialogueText.textContent = "*Putin is TANKING the next 3 hits*";
+                    dialogueText.textContent = "*Коля не сдается, выдерживая еще 3 удара*";
 
                     continueButton.style.display = "none";
                     break;
