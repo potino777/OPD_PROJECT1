@@ -310,34 +310,34 @@ async function enterAttack () {
         default:
             dialogueText.textContent = "...";
         case 11:
-            dialogueText.textContent = "Крепостной Коля: наш народ одержит победу над любым иноземцем, коли таков позовет нас на бой";
+            dialogueText.textContent = "Коля: наш народ одержит победу над любым иноземцем, коли таков позовет нас на бой";
             break;
         case 10:
-            dialogueText.textContent = "Крепостной Коля: судя по вам, вы из далеких, далеких земель, прибыли здесь чтобы убить нас...";
+            dialogueText.textContent = "Коля: судя по вам, вы из далеких, далеких земель, прибыли здесь чтобы убить нас...";
             break;
         case 9:
-            dialogueText.textContent = "Крепостной Коля: своего сударя я не подведу, а ты и метра дальше не пройдешь!";
+            dialogueText.textContent = "Коля: своего сударя я не подведу, а ты и метра дальше не пройдешь!";
             break;
         case 8:
-            dialogueText.textContent = "Крепостной Коля: мы сдержим любых захватчиков на нашей же земле...";
+            dialogueText.textContent = "Коля: мы сдержим любых захватчиков на нашей же земле...";
             break;
         case 7:
-            dialogueText.textContent = "Крепостной Коля: даже если появятся жертвы среди наших воинов";
+            dialogueText.textContent = "Коля: даже если появятся жертвы среди наших воинов";
             break;
         case 6:
-            dialogueText.textContent = "Крепостной Коля: я их защищу, покажу кто их лидер, и они же мне и помогут";
+            dialogueText.textContent = "Коля: я их защищу, покажу кто их лидер, и они же мне и помогут";
             break;
         case 5:
-            dialogueText.textContent = "Крепостной Коля: мы встанем за свою родину";
+            dialogueText.textContent = "Коля: мы встанем за свою родину";
             break;
         case 4:
-            dialogueText.textContent = "Крепостной Коля: и нас никто не убедит сдаваться";
+            dialogueText.textContent = "Коля: и нас никто не убедит сдаваться";
             break;
         case 3:
-            dialogueText.textContent = "Крепостной Коля: мои русские люди";
+            dialogueText.textContent = "Коля: мои русские люди";
             break;
         case 2:
-            dialogueText.textContent = "Крепостной Коля: сражаются вечно.";
+            dialogueText.textContent = "Коля: сражаются вечно.";
             break;
         case 1:
             switch (putinTanking) {
@@ -347,13 +347,13 @@ async function enterAttack () {
                     dialogueText.style.left = "20vw";
                     dialogueText.style.width = "70vw";
 
-                    dialogueText.textContent = "Крепостной Коля: так уж думаешь тебе наш народ сдасться?";
+                    dialogueText.textContent = "Коля: так уж думаешь тебе наш народ сдасться?";
 
                     continueButton.style.display = "block";
 
                     await waitForEvent(continueButton, "click")
 
-                    dialogueText.textContent = "Крепостной Коля: такому не бывать!";
+                    dialogueText.textContent = "Коля: такому не бывать!";
 
                     await waitForEvent(continueButton, "click")
 
@@ -1284,7 +1284,7 @@ async function start () {
 
     continueButton.style.display = "none";
     
-    dialogueText.textContent = "*Крепостной Коля обьявляет бой!*";
+    dialogueText.textContent = "*Коля обьявляет бой!*";
 
     putinAppearance.style.height = "64vh";
 
