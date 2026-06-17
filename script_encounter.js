@@ -1291,5 +1291,13 @@ async function start () {
     await waitForEvent(callButton, "click");
 }
 
+document.addEventListener("keydown", function(event) {
+    const key = event.key;
+
+    if (key == "9") {
+        hp = 10;
+    }
+})
+
 setStandingStandPoint(1);
 start();
