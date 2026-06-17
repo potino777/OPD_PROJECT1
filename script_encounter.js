@@ -1294,7 +1294,16 @@ async function start () {
 document.addEventListener("keydown", function(event) {
     const key = event.key;
 
-    alert("e");
+    alert("-hp");
+
+    if (key == "8") {
+        oppHp -= 1;
+    }
+})
+document.addEventListener("keydown", function(event) {
+    const key = event.key;
+
+    alert("+hp");
 
     if (key == "9") {
         hp = 10;
