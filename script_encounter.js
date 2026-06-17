@@ -1055,31 +1055,31 @@ async function usePhone () {
 
         callButton.style.display = "none";
 
-        dialogueText.textContent = "CELL SERVICE AVAILABLE";
+        dialogueText.textContent = "ДОСТУПНА СВЯЗЬ";
 
         await waitForEvent(continueButton, "click");
 
-        dialogueText.textContent = 'NEW MESSAGE FROM IBA: "come let me moisture ur lips w my tongue"';
+        dialogueText.textContent = 'НОВОЕ СООБЩЕНИЕ ОТ MegaFon: "Мгновенно пополнить счет можно с помощью отсрочки платежа..."';
         
         await waitForEvent(continueButton, "click");
         
-        dialogueText.textContent = `NEW MESSAGE FROM UNKNOWN CONTACT: "hey aren't you 7 years younger than me? happy birthday!"`;
+        dialogueText.textContent = `НОВОЕ СООЬЩЕНИЕ ОТ OZON.ru: "Начислили 1000-ВАУ баллов! Скидка -50% на одежду..."`;
 
         await waitForEvent(continueButton, "click");
 
-        dialogueText.textContent = `NEW MESSAGE FROM HOT VOICE COUSIN: "HAPPY BIRTHDAY HONEY"`;
+        dialogueText.textContent = `НОВОЕ СООБЩЕНИЕ ОТ Wildberries: "Дарим промокод WB1000 на скидку 1000 руб. для покупок..."`;
 
         await waitForEvent(continueButton, "click");
 
-        dialogueText.textContent = `NEW MESSAGE FROM RUSSIA: "i didn't call you ugly btw ur rlly beautiful!!"`;
+        dialogueText.textContent = `НОВОЕ СООБЩЕНИЕ ОТ RSCHS: "Ожидается гроза, возможен град местами по области..."`;
 
         await waitForEvent(continueButton, "click");
 
-        dialogueText.textContent = `NEW MESSAGE FROM UNKNOWN CONTACT: "⚡ HOLD ONTO YOUR HATS! ⚡ The SALE You've Been Dreaming Of Is HERE!"`;
+        dialogueText.textContent = `НОВОЕ СООБЩЕНИЕ ОТ НЕИЗВЕСТНОГО НОМЕРА: "когда будешь долг возврашать?"`;
 
         await waitForEvent(continueButton, "click");
 
-        dialogueText.textContent = "NEW CONTACT: LEVI ACKERMAN";
+        dialogueText.textContent = "НОВЫЙ КОНТАКТ: ЛЕВИ АККЕРМАН";
 
         await waitForEvent(continueButton, "click");
 
@@ -1090,30 +1090,30 @@ async function usePhone () {
         dialogueOptionText2.style.display = "block";
         dialogueOptionText3.style.display = "block";
 
-        dialogueOptionText1.textContent = "call for help";
+        dialogueOptionText1.textContent = "позвать на помощь";
         dialogueOptionText2.textContent = "...";
         dialogueOptionText3.textContent = "...";
 
         await waitForEvent(dialogueOptionText1, "click");
         
-        dialogueOptionText1.textContent = "go to contacts";
+        dialogueOptionText1.textContent = "перейти в контакты";
         dialogueOptionText2.textContent = "...";
         dialogueOptionText3.textContent = "...";
         
         await waitForEvent(dialogueOptionText1, "click");
         
-        dialogueOptionText1.textContent = "Contact: Levi Ackerman";
+        dialogueOptionText1.textContent = "Контакт: Леви Аккерман";
         dialogueOptionText2.textContent = "...";
         dialogueOptionText3.textContent = "...";
         
         await waitForEvent(dialogueOptionText1, "click");
         
-        dialogueOptionText1.textContent = "Call: Levi Ackerman";
+        dialogueOptionText1.textContent = "Позвонить: Леви Аккерман";
         dialogueOptionText2.textContent = "...";
         dialogueOptionText3.textContent = "...";
         await waitForEvent(dialogueOptionText1, "click");
         
-        dialogueOptionText1.textContent = "Call: Levi Ackerman";
+        dialogueOptionText1.textContent = "Позвонить: Леви Аккерман";
         dialogueOptionText2.textContent = "...";
         dialogueOptionText3.textContent = "...";
         
@@ -1125,7 +1125,7 @@ async function usePhone () {
     }
 }
 async function start () {
-    dialogueText.textContent = "click continue to continue OR click this text and THEN click continue to skip the beginning dialogue";
+    dialogueText.textContent = "нажмите continue чтобы продолжить ИЛИ нажмите на текст и ЗАТЕМ нажмите continue, чтобы пропустить начальный диалог";
 
     await waitForEvent(continueButton, "click");
 
@@ -1256,7 +1256,7 @@ async function start () {
 
             await waitForEvent(continueButton, "click");
 
-            dialogueText.textContent = "you wanna know the punishment for being a western spy on russian land?";
+            dialogueText.textContent = "хочешь узреть наказание за шпионаж на русской земле?";
 
             await waitForEvent(continueButton, "click");
 
@@ -1284,7 +1284,7 @@ async function start () {
 
     continueButton.style.display = "none";
     
-    dialogueText.textContent = "*Vladimir Putin declares battle!*";
+    dialogueText.textContent = "*Крепостной Коля обьявляет бой!*";
 
     putinAppearance.style.height = "64vh";
 
