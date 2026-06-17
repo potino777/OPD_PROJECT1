@@ -972,8 +972,8 @@ async function usePhone () {
     if (!attackEntered) {
         showDialogueOptions()
 
-        dialogueOptionText1.textContent = "*Call for help*";
-        dialogueOptionText2.textContent = "*check a picture of Levi in your gallery*";
+        dialogueOptionText1.textContent = "*Позвонить на помощь*";
+        dialogueOptionText2.textContent = "*Посмотреть на фотографию Леви Аккермана в вашей галерее*";
         dialogueOptionText3.textContent = "";
 
         await buttonsListener([dialogueOptionText1, dialogueOptionText2, dialogueOptionText3]);
@@ -1138,21 +1138,21 @@ async function start () {
 
     await waitForEvent(continueButton, "click");
 
-    dialogueText.textContent = 'that video, and actually, any other part of the internet i deem unsafe';
+    dialogueText.textContent = 'что же забыли на моей земле вы, не русский человек?';
 
     await waitForEvent(continueButton, "click");
 
-    dialogueText.textContent = "you will not need to watch them and you will not be able to watch them";
+    dialogueText.textContent = "зачем явились на земле матушке, на которой не родились?";
 
     await waitForEvent(continueButton, "click");
 
-    dialogueText.textContent = "all of that is dirty western media that corrupts the brains of my citizens with all the propaganda";
+    dialogueText.textContent = "не похоже на то, что у вас добрые намерения...";
 
     await waitForEvent(continueButton, "click");
     
-    dialogueOptionText1.textContent = "*Insist on finishing the video*";
-    dialogueOptionText2.textContent = "*Confess love*";
-    dialogueOptionText3.textContent = '"fuck off"';
+    dialogueOptionText1.textContent = "*Попросить остаться*";
+    dialogueOptionText2.textContent = "*Предложить дружбу*";
+    dialogueOptionText3.textContent = '"Отступите с дороги, вы жалкий крепостной"';
 
     showDialogueOptions();
 
@@ -1162,27 +1162,27 @@ async function start () {
 
     switch(dialogueOptionTextClicked) {
         case 1:
-            dialogueText.textContent = "why do you wanna finish the video?";
+            dialogueText.textContent = "зачем вы ступили на русские земли?";
 
             await waitForEvent(continueButton, "click");
 
-            dialogueText.textContent = "does that video contain instructions from western agencies aimed towards professional espionage within the borders of the Russian Federation?";
+            dialogueText.textContent = "не ужели вас направили сюда, чтобы навредить родине-матери моей?";
 
             await waitForEvent(continueButton, "click");
 
-            dialogueText.textContent = "who are you...";
+            dialogueText.textContent = "кем же вы являетесь?";
 
             await waitForEvent(continueButton, "click");
 
-            dialogueText.textContent = "a western spy?";
+            dialogueText.textContent = "шпионом?";
 
             await waitForEvent(continueButton, "click");
 
-            dialogueText.textContent = "sorry lady but i'll have to step in";
+            dialogueText.textContent = "извините уж, но мне придеться заступиться за свой народ";
 
             await waitForEvent(continueButton, "click");
 
-            dialogueText.textContent = "to eliminate you";
+            dialogueText.textContent = "и избавиться от вас";
 
             await waitForEvent(continueButton, "click");
             break;
@@ -1191,11 +1191,11 @@ async function start () {
 
             await waitForEvent(continueButton, "click");
 
-            dialogueText.textContent = "what are you talking about?";
+            dialogueText.textContent = "что же вы несете?";
 
             await waitForEvent(continueButton, "click");
 
-            dialogueText.textContent = "why would a foreigner confess love to me?";
+            dialogueText.textContent = "зачем чужак предлагает мне содружество?";
 
             await waitForEvent(continueButton, "click");
 
@@ -1203,27 +1203,27 @@ async function start () {
 
             await waitForEvent(continueButton, "click");
 
-            dialogueText.textContent = "only to deceive me";
+            dialogueText.textContent = "только чтобы пронзить мне нож в спину!";
 
             await waitForEvent(continueButton, "click");
 
-            dialogueText.textContent = "to make me pull my guard down and create an opportunity to stab me in the back!";
+            dialogueText.textContent = "чтобы пока я не замечаю, вы же будете избавляться от моего народа на моей земле";
 
             await waitForEvent(continueButton, "click");
 
-            dialogueText.textContent = "i know what game you are playing...";
+            dialogueText.textContent = "я вижу сквозь вас...";
 
             await waitForEvent(continueButton, "click");
 
-            dialogueText.textContent = "the americans must've sent you trick me";
+            dialogueText.textContent = "вас отправили коварные захватчики";
 
             await waitForEvent(continueButton, "click");
 
-            dialogueText.textContent = "you cowardish american spy";
+            dialogueText.textContent = "вы чужак нам не принадлежите";
 
             await waitForEvent(continueButton, "click");
 
-            dialogueText.textContent = "i will have to kill you for this.";
+            dialogueText.textContent = "придеться вас убить.";
 
             await waitForEvent(continueButton, "click");
             break;
@@ -1232,27 +1232,27 @@ async function start () {
 
             await waitForEvent(continueButton, "click");
 
-            dialogueText.textContent = "i will not stand such disrespect";
+            dialogueText.textContent = "я не буду терпеть оскорбления...";
 
             await waitForEvent(continueButton, "click");
 
-            dialogueText.textContent = "you are not only disrespecting me";
+            dialogueText.textContent = "вы оскорбляете не только меня,";
 
             await waitForEvent(continueButton, "click");
 
-            dialogueText.textContent = "you are disrespecting my people";
+            dialogueText.textContent = "но и весь мой народ!";
 
             await waitForEvent(continueButton, "click");
 
-            dialogueText.textContent = "that is something that only a brainwashed westerner would do";
+            dialogueText.textContent = "таким только незамысловатый чужак будет тут заниматься";
 
             await waitForEvent(continueButton, "click");
 
-            dialogueText.textContent = "or worse...";
+            dialogueText.textContent = "или даже хуже, чем чужак...";
 
             await waitForEvent(continueButton, "click");
 
-            dialogueText.textContent = "a foreign spy!";
+            dialogueText.textContent = "подосланный шпион!";
 
             await waitForEvent(continueButton, "click");
 
@@ -1260,7 +1260,7 @@ async function start () {
 
             await waitForEvent(continueButton, "click");
 
-            dialogueText.textContent = "death.";
+            dialogueText.textContent = "так узри его - это смерть!";
 
             await waitForEvent(continueButton, "click");
     }
