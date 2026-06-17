@@ -253,7 +253,7 @@ async function enterAttack () {
         opponentNumber = getRandomInt(1, 3);
     }
 
-    opponentAnnouncement.textContent = attackNames[opponentNumber-1]+" INCOMING";
+    opponentAnnouncement.textContent = attackNames[opponentNumber-1]+" ПРИБЫВАЕТ";
     opponentAnnouncement.style.display = "block";
 
     await new Promise((resolve) => {
@@ -937,10 +937,10 @@ const standPointPositions = [15, 35, 55, 75];
 const blockedStandPoints = [];
 
 const attackNames = [
-    "BEAR",
-    "RUSSIAN DRUNK",
-    "BABUSHKA",
-    "WIDE PUTIN",
+    "МЕДВЕДЬ",
+    "ПЬЮЩИЙ",
+    "БАБУШКА",
+    "КОЛЯ",
 ]
 
 let finalAttack = false;
