@@ -1134,11 +1134,11 @@ async function start () {
     if (!skipBeginning) {
     putinMusic2Intro.play();
 
-    dialogueText.textContent = "*Vladimir Putin appears!*";
+    dialogueText.textContent = "*Крепостной Коля прибывает!*";
 
     await waitForEvent(continueButton, "click");
 
-    dialogueText.textContent = 'that video, and actually, any other part of the internet i deem "unsafe';
+    dialogueText.textContent = 'that video, and actually, any other part of the internet i deem unsafe';
 
     await waitForEvent(continueButton, "click");
 
@@ -1284,7 +1284,7 @@ async function start () {
 
     continueButton.style.display = "none";
     
-    dialogueText.textContent = "*Коля обьявляет бой!*";
+    dialogueText.textContent = "*Крепостной Коля обьявляет бой!*";
 
     putinAppearance.style.height = "64vh";
 
